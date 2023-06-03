@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button class="btn">Купить</button>
+    <div class="content"></div>
+    <img class="img" src="photo.jpg" alt="photo">
+
+
+    <h1 class="title">Lorem, ipsum dolor.</h1>
+    <h2 id="heading">Lorem ipsum dolor sit amet.</h2>
+    <ul class="ul">
+        <li class="list">text 1</li>
+        <li class="list">text 2</li>
+        <li class="list">text 3</li>
+    </ul>
+    <p class="text">Lorem, ipsum dolor. 1</p>
+    <p class="text">Lorem, ipsum dolor. 2</p>
+    <p class="text">Lorem, ipsum dolor. 3</p>
+    <p class="text">Lorem, ipsum dolor. 4</p>
+    <script>
+        const buttonEl = document.querySelector('.btn');
+        const contentEl = document.querySelector('.content');
+        const imgEl = document.querySelector('.img');
+
+        imgEl.onclick = function() {
+            imgEl.src = 'newphoto.jpg';
+        }
+
+        const textEl = document.createElement('p');
+        textEl.textContent = 'любой текст';
+
+
+        console.log(buttonEl);
+        buttonEl.onclick = function() {
+            buttonEl.textContent = 'товар в корзине';
+            contentEl.appendChild(textEl);
+        }
+
+
+        // const titleEl = document.querySelector('.title'); //нашли заголовок
+        // titleEl.textContent = 'заголовок уже из js'; //поменяли заголовок
+        // const heading2 = document.querySelector('#heading');
+        // heading2.remove(); //удалить
+        // const list = document.querySelector('.list');
+        // const listEls = document.getElementsByClassName('list');
+        // console.log(listEls); //html collection
+        // const listElsQS = document.querySelectorAll('.list');
+        // console.log(listElsQS); // NodeList
+        // // const heading2 = document.getElementById('heading');
+        // // console.log(heading2); //старый способ
+        // const heading3 = document.querySelector('#heading');
+        // console.log(heading3); // новый способ
+        // const heading = document.querySelector('.title');
+        // //const text = document.querySelector('.title+p');
+        // const text = document.querySelectorAll('.text');
+        // text.forEach(element => {
+        //     console.log(element);
+        // });
+        // // for (let i = 0; i < text.length; i++) {
+        //     console.log(text[i]); //вывел все p
+        // }
+        // console.log(heading);
+        // console.log(text);
+    </script>
+</body>
+
+</html>
