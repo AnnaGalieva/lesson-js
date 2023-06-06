@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="menu">
+        <li class="menu__list">
+            <a href="" class="menu__link">link 1</a>
+        </li>
+        <li class="menu__list">
+            <a href="" class="menu__link">link 2</a>
+        </li>
+        <li class="menu__list">
+            <a href="" class="menu__link">link 3</a>
+        </li>
+        <li class="menu__list">
+            <a href="" class="menu__link">link 4</a>
+        </li>
+    </ul>
+
+    <script>
+        const liEl = document.querySelectorAll('.menu__ist');
+        const liElOne = document.querySelector('.menu__ist');
+        const linkEl = document.querySelector('.menu__link');
+        const menuEl = document.querySelector('.menu');
+
+        console.log(liElOne);
+        console.log(liElOne.parentElement.lastElementChild); //1 и последний
+        console.log(liElOne.lastChild);
+        console.log(liElOne.parentElement.firstElementChild); //последний потом 1
+        console.log(liElOne.nextElementSibling); //1, 2
+        console.log(liElOne.parentElement.lastElementChild.previousElementSibling); //3
+
+        // menuEl.childNodes.forEach(element => {
+        //     console.log(element);
+        // });
+
+        // console.log(linkEl.children); //htmlcollection
+        // console.log(linkEl.childNodes); //nodelist
+
+        // console.log(menuEl.children); //htmlcollection
+        // console.log(menuEl.childNodes); //nodelist
+
+
+        // console.log(liEl); //nodelist
+        // console.log(liEl.parentNode); //undefined
+        // console.log(liElOne.parentNode.children); //htmlcollection
+    </script>
+</body>
+
+</html>
