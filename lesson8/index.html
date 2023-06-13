@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="menu">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <!-- <button onclick="console.log('hello click html')" class="button">Купить</button>
+    <div onclick="console.log('hello click html')" class="div-button">Купить 2</div> -->
+    <!-- <button class="button">Купить 1</button>
+    <button class="button">Купить 2</button>
+    <button class="button">Купить 3</button> -->
+    <script>
+        const menuEl = document.querySelector('.menu');
+        const nameFunction = (e) => {
+            console.log(e.target, e.currentTarget);
+        }
+        menuEl.addEventListener('click', nameFunction);
+
+        // const buttonEl = document.querySelector('button');
+        // let count = 0;
+        // buttonEl.onclick = function() {
+        //     console.log('Click js button');
+        //     count++;
+        //     console.log(`Кликов по кнопке ${count}`);
+        // }
+
+
+
+        // const buttonEl = document.querySelector('button');
+        // let count = 0;
+        // const click = function() {
+        //         console.log('Click js button');
+        //         count++;
+        //         console.log(`Кликов по кнопке ${count}`);
+        //     }
+        //     // buttonEl.onclick = click;
+        // buttonEl.addEventListener('click', click);
+
+
+        // buttonEl.addEventListener('click', function(event) {
+        //     console.log('click add');
+        // });
+
+
+        // buttonEl.addEventListener('click', function(e) {
+        //     console.log('click add two');
+        // });
+        // const buttonEls = document.querySelectorAll('.button');
+        // buttonEls.forEach(element => {
+        //     element.addEventListener('click', function(event) {
+        //         //console.log(event.target);
+        //         const target = event.target;
+        //         console.log(target);
+        //     });
+        // });
+    </script>
+</body>
+
+</html>
