@@ -1,0 +1,26 @@
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.product-box {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: 250px;
+    border: 5px solid pink;
+    padding: 16px;
+}
+
+.img {
+    width: 75%;
+    margin: 30px;
+}
+
+.product_price {
+    color: red;
+}

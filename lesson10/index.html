@@ -8,7 +8,16 @@
 </head>
 
 <body>
-
+    <p id="user"></p>
+    <script>
+        const userInfo = '{"first_name" : "John", "last_name" : "Smith","location": "London"}';
+        const obj = JSON.parse(s);
+        document.getElementById("user").innerHTML = "Name: " + obj.first_name + " " + obj.last_name + "<br>" +
+            "Location: " + obj.location;
+        // Результат:
+        //     Name: John Smith
+        // Location: London
+    </script>
 </body>
 
 </html>

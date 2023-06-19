@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="product-box"></div>
+    <script src="data.js"></script>
+    <script>
+        // Задание 1
+        // 1. Поиск в интернете(бесплатные api примеры).
+        // 2. Найти любые данные, на произвольную тему.
+        // 3. Создать файл data.js.
+        // 4. Создать переменную которая будет хранить данные из публичных api.
+
+        // Задание 2
+        // 1. Создать файл index.html.
+        // 2. Подключить data.js.
+        // 3. Сформировать контент из данных(картинка загловок и параграф).
+        // 4. Добавить данный контент в вёрстку.
+        // 5. * Добавить стили при необходимости(по желанию).
+        const data = JSON.parse(dataInfo);
+        console.log(data);
+
+        data.forEach(element => {
+            const productBox = document.querySelector('.product-box');
+            const productEl = document.createElement('div');
+            productEl.classList.add('product');
+
+            const productId = document.createElement('h3');
+            productId.textContent = element.id;
+
+            const productBrand = document.createElement('h2');
+            productBrand.textContent = element.brand;
+
+
+            const productTitle = document.createElement('h2');
+            productTitle.classList.add('product_title');
+            productTitle.textContent = element.title;
+
+
+            const productImg = document.createElement('img');
+            productImg.classList.add('img');
+            productImg.src = element.thumbnail;
+
+            const productContent = document.createElement('div');
+            productContent.classList.add('product__content');
+
+            const productDescription = document.createElement('p');
+            productDescription.classList.add('product_description');
+            productDescription.textContent = element.description;
+
+
+            const productPrice = document.createElement('p');
+            productPrice.classList.add('product_price');
+            productPrice.textContent = element.price;
+
+
+            productBox.appendChild(productEl);
+            productEl.appendChild(productId);
+            productEl.appendChild(productBrand);
+            productEl.appendChild(productTitle);
+            productEl.appendChild(productImg);
+            productEl.appendChild(productContent);
+            productContent.appendChild(productDescription);
+            productContent.appendChild(productPrice);
+
+        });
+        fetch('https://dummyjson.com/products')
+            .then(res => res.json())
+            .then(console.log);
+
+
+        fetch('https://dummyjson.com/products/1')
+            .then(res => res.json())
+            .then(console.log);
+
+
+        fetch('https://dummyjson.com/products?limit=10&skip=10&select=title,price')
+            .then(res => res.json())
+            .then(console.log);
+
+        fetch('https://dummyjson.com/products/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: 'BMW Pencil',
+                    /* other product data */
+                })
+            })
+            .then(res => res.json())
+            .then(console.log);
+    </script>
+</body>
+
+</html>

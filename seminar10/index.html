@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content"></div>
+    <script src="data.js"></script>
+    <script>
+        // Создать файл index.html
+        // 2. Подключить data.js
+        // 3. Добавить блок < div class = "content" > < /div>
+        // 4. Создать переменную data и добавить в нее JSON parse данные из
+        // файла data.js
+        // 5. Вывести в консоль объект data
+        // 6. С помощью foreach обойти массив data
+        // 7. Вывести все изображения из данных
+
+
+
+        // Создать все необходимые заголовки, параграфы изображения(из данных json)
+        // 2. Добавить все содержимое в блок контент
+        // 3. Добавить стили при необходимости
+        const data = JSON.parse(dataInfo);
+        console.log(data);
+        const content = document.querySelector('.content');
+        // data.forEach(element => {
+        //     //console.log(element.answer);
+        //     const heading2 = document.createElement('h2');
+        //     heading2.textContent = element.question;
+        //     content.append(heading2);
+
+        // });
+        data.forEach(element => {
+            // const card = document.querySelector('div');
+            // card.classList.add('card');
+            // card.style.width = '200px';
+            // card.style.border = '2px solid black';
+            // content.append(card);
+
+            const heading2 = document.createElement('h2');
+            heading2.textContent = element.id;
+            content.append(heading2);
+
+
+            const heading3 = document.createElement('h3');
+            heading3.textContent = element.question;
+            content.append(heading3);
+
+
+            const img = document.createElement('img');
+            img.src = element.value;
+            content.append(img);
+
+        });
+    </script>
+</body>
+
+</html>
