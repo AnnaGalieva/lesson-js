@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="shopping center">
+        <div class="shopping__product">
+            <div class="shopping__product_item">
+                <img class="shopping_product_img" src="img/product1.svg.svg" alt="">
+                <div class="shopping_product_head">
+                    <div class="shopping__product_content">
+                        <div class="shopping__product_link"> <a class="shopping__product_heading" href="#">MANGO PEOPLE  T-SHIRT</a></div>
+                        <div class="closeModal"><button class="closeModal_btn"><img src="img/close.svg.svg" alt="">
+                                </button></div>
+                    </div>
+                    <div class="shopping__product_about">
+                        <p class="shopping__product_text">Price:&nbsp;<span class="shopping_product_text_color">$300</span> </p>
+                        <p class="shopping__product_text">Color: Red</p>
+                        <p class="shopping__product_text">Size: Xl </p>
+                        <form class="shopping__product_text" action="#">Quantity: <input min="1" type="number" required></form>
+                    </div>
+                </div>
+            </div>
+            <div class="shopping__product_item">
+                <img class="shopping_product_img" src="img/product2.svg.svg" alt="">
+                <div class="shopping_product_head">
+                    <div class="shopping__product_content">
+                        <div class="shopping__product_link">
+                            <a class="shopping__product_heading" href="#">ELLERY X M'O  CAPSULE</a></div>
+                        <div class="closeModal"><button class="closeModal_btn"><img src="img/close.svg.svg" alt="">
+                            </button></div>
+                    </div>
+
+                    <div class="shopping__product_about">
+                        <p class="shopping__product_text">Price:&nbsp;<span class="shopping_product_text_color">$52</span> </p>
+                        <p class="shopping__product_text">Color: Black</p>
+                        <p class="shopping__product_text">Size: Xl </p>
+                        <form class="shopping__product_text" action="#">Quantity: <input min="1" type="number" required></form>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataProducts);
+        console.log(data);
+        data.forEach(element => {
+            const shoppingProduct = document.querySelector('.shopping__product');
+            const shoppingProducItem = document.createElement('div');
+            shoppingProducItem.classList.add('shopping__product_item');
+
+            const productImg = document.createElement('img');
+            productImg.classList.add('shopping_product_img');
+            productImg.src = element.images;
+
+            const shoppingProductHead = document.createElement('div');
+            shoppingProductHead.classList.add('shopping_product_head');
+
+            const shoppingProductContent = document.createElement('div');
+            shoppingProductContent.classList.add('shopping__product_content');
+
+            const shoppingProductLink = document.createElement('div');
+            shoppingProductLink.classList.add('shopping__product_link');
+
+
+            const shoppingProductHeading = document.createElement('a');
+            shoppingProductHeading.classList.add('shopping__product_heading');
+            shoppingProductHeading.href = '#';
+            shoppingProductHeading.textContent = element.product_heading;
+
+            const productElBut = document.createElement('div');
+            productElBut.classList.add('closeModal');
+            const closeModalBtn = document.createElement('button');
+            closeModalBtn.classList.add('closeModal_btn');
+            const closeModalImg = document.createElement('img');
+            closeModalImg.src = element.closeModalBtn;
+
+            const shoppingProductAbout = document.createElement('div');
+            shoppingProductAbout.classList.add('shopping__product_about');
+
+
+            const shoppingProductPrice = document.createElement('p');
+            shoppingProductPrice.classList.add('shopping__product_text');
+            shoppingProductPrice.textContent = 'Price:';
+
+
+            const shoppingProductPriceSpan = document.createElement('span');
+            shoppingProductPriceSpan.classList.add('shopping_product_text_color');
+            shoppingProductPriceSpan.textContent = element.currency + element.price;
+
+            const shoppingProductColor = document.createElement('p');
+            shoppingProductColor.classList.add('shopping__product_text');
+            shoppingProductColor.textContent = 'Color:' + element.color; //`Color: ${element.color}`;// react    `Color: {{element.color}}`;
+
+            const shoppingProductSize = document.createElement('p');
+            shoppingProductSize.classList.add('shopping__product_text');
+            shoppingProductSize.textContent = 'Size:' + element.size;
+
+            const shoppingProductForm = document.createElement('form');
+            shoppingProductForm.classList.add('shopping__product_text');
+            shoppingProductForm.textContent = element.Quantity;
+            const shoppingProductInput = document.createElement('input');
+            shoppingProductInput.type = 'number';
+            shoppingProductInput.min = '1';
+
+
+
+            shoppingProduct.appendChild(shoppingProducItem);
+            shoppingProducItem.appendChild(productImg);
+            shoppingProducItem.appendChild(shoppingProductHead);
+            shoppingProductHead.appendChild(shoppingProductContent);
+            shoppingProductHead.appendChild(shoppingProductAbout);
+            shoppingProductContent.appendChild(shoppingProductLink);
+            closeModalBtn.appendChild(closeModalImg);
+            shoppingProductContent.appendChild(productElBut);
+            shoppingProductLink.appendChild(shoppingProductHeading);
+            productElBut.appendChild(closeModalBtn);
+            shoppingProductAbout.appendChild(shoppingProductPrice);
+            shoppingProductPrice.appendChild(shoppingProductPriceSpan);
+            shoppingProductAbout.appendChild(shoppingProductColor);
+            shoppingProductAbout.appendChild(shoppingProductSize);
+            shoppingProductAbout.appendChild(shoppingProductForm);
+            shoppingProductForm.appendChild(shoppingProductInput);
+        });
+    </script>
+</body>
+
+</html>
+
+</html>

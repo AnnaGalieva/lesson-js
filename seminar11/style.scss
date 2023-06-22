@@ -1,0 +1,131 @@
+@import'vars';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    padding-left: calc(50% - 570px);
+    padding-right: calc(50% - 570px);
+}
+
+.shopping {
+    gap: 128px;
+    display: flex;
+    flex-direction: row;
+}
+
+.closeModal {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 28px;
+    padding-right: 22px;
+}
+
+.closeModal_btn {
+    cursor: pointer;
+    display: flex;
+    border: none;
+    background: #FFFFFF;
+}
+
+.shopping__product {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 96px;
+    margin-bottom: 72px;
+    &_img {
+        width: 262px;
+        height: 306px;
+    }
+    &_item {
+        // width: 652px;
+        height: 306px;
+        display: flex;
+        gap: 32px;
+        box-shadow: 17px 19px 24px rgba(0, 0, 0, 0.13);
+    }
+    &_content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 137px;
+    }
+    &_head {
+        width: 390px;
+    }
+    &_link {
+        padding-top: 22px;
+        padding-bottom: 42px;
+    }
+    &_heading {
+        width: 262px;
+        display: flex;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        color: $color_1;
+        &:hover {
+            color: $color_7;
+            transition: 0.1s;
+        }
+    }
+    &_text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 26px;
+        color: #575757;
+        padding-bottom: 6px;
+        display: flex;
+        &_color {
+            color: #EF5B70;
+        }
+    }
+    &_button {
+        display: flex;
+        gap: 192px;
+        padding-bottom: 128px;
+    }
+    &_btn {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+        border: 1px solid #A4A4A4;
+        padding-top: 16px;
+        padding-bottom: 15px;
+        padding-left: 38px;
+        padding-right: 38px;
+        margin-top: 72px;
+        &:hover {
+            background-color: $background-color_2;
+            color: $color_3;
+            transition: 0.1s;
+        }
+    }
+}
+
+.shopping_product_text_color {
+    color: #EF5B70;
+}
+
+input[type="number"] {
+    width: 44px;
+    height: 24px;
+    margin-left: 24px;
+    text-align: center;
+    border: 1px solid #EAEAEA;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #656565;
+    padding-left: 9x;
+    padding-left: 9x;
+    padding-left: 9x;
+    padding-bottom: 2x;
+}
