@@ -55,3 +55,15 @@ const featured = `
 "hoverImage":"http://127.0.0.1:5500/dz_seminar11/img/product-hover.svg"
 }
 ]`;
+
+const dataProducts = `
+[{
+"id":1,
+"images":"http://127.0.0.1:5500/seminar11/img/product1.svg.svg",
+"product_heading":"MANGO PEOPLE T-SHIRT",
+"currency":"$",
+"price":"300",
+"color":"Red",
+"size":"Xl",
+"Quantity":"Quantity:",
+"closeModalBtn":"http://127.0.0.1:5500/seminar11/img/close.svg.svg"}]`;

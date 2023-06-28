@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <audio controls preload="auto">
+        <source src="file.ogg" type="audio/ogg" />
+        </audio>
+
+    <div>
+        <audio src="file.mp3" controls></audio>
+    </div>
+    <div>
+        <canvas width="300" height="20"></canvas>
+    </div>
+
+    <input type="file" accept="audio/*" capture id="recorder">
+    <audio id="player" controls></audio>
+    <script>
+        const recorder = document.getElementById('recorder')
+        const player = document.getElementById('player')
+        recorder.addEventListener('change', (event) => {
+            const [file] = event.target.files
+            const url = URL.createObjectURL(file)
+                // Добавление элементу потока в качестве источника
+            player.src = url
+        })
+
+
+
+        const audio2 = document.querySelector('audio')
+        const {
+            played
+        } = audio // объект TimeRanges
+        const handlePlayed = () => {
+            let totalPlayedSeconds = 0
+            for (i = 0; played.length; i++) {
+                totalPlayedSeconds += played.end(i) - played.start(i)
+            }
+            console.log(totalPlayedSeconds)
+        }
+        audio.addEventListener('pause', handlePlayed, false)
+        audio.addEventListener('ended', handlePlayed, false)
+
+
+        const audio = document.querySelector('audio')
+        const {
+            buffered,
+            duration
+        } = audio
+        const canvas = document.querySelector('canvas')
+        const context = canvas.getContext('2d')
+        context.fillStyle = 'lightgray'
+        context.fillRect(0, 0, canvas.width, canvas.height)
+        context.fillStyle = 'red'
+        context.strokeStyle = 'white'
+        const coef = canvas.width / duration // Длина одной секунды в пикселях
+            // отображение TimeRanges
+        audio.addEventListener('seeked', () => {
+            for (i = 0; i < buffered.length; i++) {
+                const startX = buffered.start(i) * coef
+                const endX = buffered.end(i) * coef
+                const width = endX - startX
+                context.fillRect(startX, 0, width, canvas.height)
+                context.rect(startX, 0, width, canvas.height)
+                context.stroke()
+            }
+        })
+
+        // const audio = document.querySelector('audio')
+        // audio.addEventListener('playing', () => {
+        //     // if (audio.networkState === 2) {
+        //     if (audio.networkState === HTMLMediaElement.NETWORK_LOADING) {
+        //         console.log('Все ещё загружается...')
+        //     }
+        // })
+        // const audio2 = document.querySelector('audio')
+        // audio.addEventListener('loadeddata', () => {
+        //     // if (audio.readyState > 2) {
+        //     if (audio.readyState > HTMLMediaElement.HAVE_CURRENT_DATA) {
+        //         audio.play()
+        //     }
+        // })
+        // const audio3 = document.querySelector('audio')
+        // const {
+        //     buffered
+        // } = audio
+        // console.log(buffered.length) // Вернет 2
+        // console.log(buffered.start(0)) // Вернет 0
+        // console.log(buffered.end(0)) // Вернет 5
+        // console.log(buffered.start(1)) // Вернет 15
+        // console.log(buffered.end(1)) // Вернет 19
+
+        // document.addEventListener('play', (event) => {
+        //         console.log(event.target) // audio/video элемент
+        //     }, true) // Необходимо указать фазу захвата третьим параметром
+    </script>
+</body>
+
+</html>

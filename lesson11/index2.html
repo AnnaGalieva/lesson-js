@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <audio class="audio" controls src="https://cdn.drivemusic.me/dl/online/OivNl_v8WAJVujXsw6128w/1687729313/download_music/2011/08/lady-gaga-you-and-i-radio-edit.mp3" preload="auto"></audio>
+    <script>
+        const audioEl = document.querySelector('.audio');
+        audioEl.addEventListener('play', function(e) {
+            console.log('Вы нажали аудио плей');
+        });
+        audioEl.addEventListener('pause', function(e) {
+            console.log('Вы нажали паузу');
+        });
+    </script>
+</body>
+
+</html>
