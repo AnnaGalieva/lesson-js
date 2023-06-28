@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 2em;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        
+        .box {
+            border: 3px solid #666;
+            background-color: #ddd;
+            border-radius: .5em;
+            padding: 10px;
+            cursor: move;
+        }
+        
+        .box.over {
+            border: 3px dotted #666;
+        }
+        
+        [draggable] {
+            user-select: none;
+        }
+    </style>
+    <div class="container">
+        <div draggable="true" class="box">A</div>
+        <div draggable="true" class="box">B</div>
+        <div draggable="true" class="box">C</div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => { //загрузка страницы
+            let dragSrcEl = null; //переменная элемента
+            function handleDragStart(e) {
+                this.style.opacity = '0.4';
+                dragSrcEl = this; //this ыранный элемент
+                console.log(dragSrcEl);
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/html', target.innerHTML);
+            }
+
+            function handleDragOver(e) {
+                if (e.preventDefault) {
+                    e.preventDefault(); //остановить обработку событий если это ссылка
+                }
+                e.dataTransfer.dropEffect = 'move'; //функция DnD
+                return false;
+            }
+
+            function handleDragEnter(e) {
+                this.classList.add('over'); //добавляем класс при наведении на элемент
+            }
+
+            function handleDragLeave(e) {
+                this.classList.add('over'); //удаляем класс
+            }
+
+            function handleDrop(e) {
+                if (e.stopPropagation) {
+                    e.stopPropagation(); //останавливает перенаправление браузера
+                }
+                if (dragSrcEl != this) {
+                    dragSrcEl.innerHTML = this.innerHTML; //добавляем новый html
+                    this.innerHTML = e.dataTransfer.getData('text/html');
+                }
+                return false;
+            }
+
+            function handleDragEnd(e) {
+                this.style.opacity = '1'; //прозрачность при отмене
+                items.forEach(function(item) {
+                    item.classList.remove('over'); //очистка класса
+                });
+
+            }
+            let items = document.querySelector('.box');
+            items.forEach((item) => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragover', handleDragOver);
+                item.addEventListener('dragenter', handleDragEnter);
+                item.addEventListener('dragleave', handleDragLeave);
+                item.addEventListener('dragend', handleDragEnd);
+                item.addEventListener('drop', handleDrop);
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam minima dolore omnis blanditiis quod sequi sapiente ullam saepe magni impedit.</p>
+    <script>
+        const pEl = document.querySelector('p');
+        console.log(document.documentElement.scrollHeight);
+        console.log(document.documentElement.clientHeight);
+        // console.log(document.documentElement.scrollTop);
+        console.log(window.pageYOffset);
+        //window.scrollBy(0, 20);
+        document.addEventListener('scroll', function(e) {
+            console.log(document.documentElement.scrollTop);
+        });
+    </script>
+</body>
+
+</html>

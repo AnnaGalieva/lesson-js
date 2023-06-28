@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log(position);
+            const {
+                latitude,
+                longitude
+            } = position.coords;
+            console.log('географические координаты устройства', latitude, longitude);
+        });
+        // let watchId = navigator.geolocation.watchPosition(({
+        //     coords
+        // }) => {
+        //     console.log('устройство обновило местоположение', coords.latitude, coords.longitude);
+        // });
+        const handlePositionError = (error) => {
+            switch (error.code) {
+                case 1:
+                    console.log('пользователь ограничил доступ к местоположению');
+                    break;
+                case 2:
+                    console.log('ошибка устройства определения местоположения');
+                    break;
+                case 3:
+                    console.log('достигнут тайм-аут');
+                    break;
+                default:
+                    console.log('местоположение недоступно', error);
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

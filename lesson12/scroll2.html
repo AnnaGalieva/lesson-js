@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content">
+        <p class="text"></p>
+    </div>
+    <script>
+        const contentEl = document.querySelector('.content');
+        document.addEventListener('scroll', function(e) {
+            //нам потребуется знать высоту документа и высоту экрана:
+            const height = document.documentElement.offsetHeight;
+            console.log(`---------------------------
+            высота документа ${height}`);
+            const screenHeight = document.documentElement.clientHeight;
+            console.log(`высота видимой области ${screenHeight}`);
+            //они могут отличаться если на страницу много контента, высота документа будет
+            //больше высоты экрана(отсюда и скролл)
+            //записываем сколько пикселейпользователь уже проскроллил:
+            const scrolled = window.scrollY;
+            console.log(`сколько уже прокрутил ${scrolled}`);
+            //обозначим порог,по приближении к которому будем вызывать какое-то действие.
+            //в нашем случае-четверть экрана до конца страницы:
+            const threshold = height - screenHeight / 4 //1432-910/4
+                //отслеживаем где находится низ экрана относительно страницы:
+            const position = scrolled + screenHeight;
+            console.log(`где находимся сейчас ${position}`);
+            if (position >= threshold) {
+                const pText = document.createElement('p');
+                pText.textContent = ``;
+                contentEl.appendChild(pText);
+            }
+        });
+    </script>
+</body>
+
+</html>
