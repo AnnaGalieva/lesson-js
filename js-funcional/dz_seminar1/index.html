@@ -44,14 +44,18 @@
         // console.log(targetElement);
 
 
-        const rootElement = document.getElementById('root');
-        const targetElement = function findElementByClass(rootElement, className = '.text') {
-            for (let i = 0; i < rootElement.children.length; i++) {
-                (rootElement.children[i].classList.contains(className))
-                console.log(rootElement.children[i]);
-            }
-        }
-        targetElement(document.getElementById('root'));
+        // const rootElement = document.getElementById('root');
+        // const targetElement = function findElementByClass(rootElement, className = '.text') {
+        //     for (let i = 0; i < rootElement.children.length; i++) {
+        //         (rootElement.children[i].classList.contains(className))
+        //         console.log(rootElement.children[i]);
+        //     }
+        // }
+        // targetElement(document.getElementById('root'));
+
+
+
+
 
         //что-то я в этом задании запуталась совсем......
 
@@ -65,6 +69,25 @@
         //     }
         //     return element;
         // }
+        const rootElement = document.querySelector('#root');
+
+        function findElementByClass(root, className) {
+            // проверяем, есть ли у корневого элемента нужный класс
+            if (root.classList.contains(className)) {
+                return root;
+            }
+            // проходимся рекурсивно по всем дочерним элементам
+            for (let i = 0; i < root.children.length; i++) {
+                const element = findElementByClass(root.children[i], className);
+                if (element !== null) {
+                    return element;
+                }
+            }
+            // если ничего не нашли, возвращаем null
+            return null;
+        }
+        const element = findElementByClass(rootElement, 'my-class');
+        console.log(element);
     </script>
 </body>
 

@@ -13,6 +13,25 @@
 // Person.changeName("Mike");
 
 
+const Person = {
+    name: this.name,
+    age: this.name,
+    gender: this.gender,
+    introduce: function() {
+        console.log(`My name is ${this.name}. I'm ${this.age} years old and I identify as ${this.gender}.`);
+    },
+    changeName: function(name) {
+        const newName = name;
+        console.log(newName);
+    }
+}
+Person.name = "John";
+Person.age = 25;
+Person.gender = "male";
+Person.introduce();
+Person.changeName("Mike");
+Person.changeName("Simon");
+
 
 // Задание 2(20 минут)
 // 1. Создайте объект Animal со свойством name и методом eat(), который
@@ -25,7 +44,28 @@
 // Dog.eat = Animal.eat;
 // Dog.eat(); // Вывод: Rex is eating.
 
+const Animal = {
+    name: this.name,
+    eat: function() {
+        console.log(`${this.name} is eating...`)
+    }
+}
 
+const Dog = {
+    name: this.name,
+    bark: function() {
+        console.log(`${this.name} is barking...`)
+    }
+}
+
+Animal.name = 'Kiki'
+Dog.name = 'Rex'
+
+Animal.eat()
+Dog.bark()
+
+Dog.eat = Animal.eat
+Dog.eat()
 
 
 // Задание 3(call, apply 20 минут)
@@ -36,7 +76,27 @@
 // console.log(calculator.add.call(null, 5, 3)); // Вывод: 8
 // console.log(calculator.subtract.apply(null, [5, 3])); // Вывод: 2
 
+const calculator = {
+    arg1: 10,
+    arg2: 20,
+    add() {
+        return this.arg1 + this.arg2;
+    },
+    subtract(num1, num2) {
+        return num1 - num2;
+    },
+    multiply(num1, num2) {
+        return num1 * num2;
+    },
+};
 
+const numbs = {
+    arg1: 10,
+    arg2: 3,
+};
+
+console.log(calculator.add.call(numbs));
+console.log(calculator.subtract.apply(null, [5, 3]));
 
 // Задание 4(Объекты через class 25 минут)
 // 1. Создайте класс Person, который имеет свойства name и age, а также
@@ -45,7 +105,20 @@
 // const person = new Person("John", 25);
 // person.introduce(); // Вывод: My name is John and I'm 25 years old.
 
+class Persons {
+    name;
+    age;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
 
+    introduce() {
+        console.log(`My name is ${this.name} and I'm ${this.age} years old.`);
+    };
+}
+const persons = new Persons("John", 25);
+persons.introduce(); // Вывод: My name is John and I'm 25 years old.*/
 
 // Задание 5(Class 30 минут)
 // Создайте класс BankAccount, который представляет банковский счет.
@@ -60,3 +133,26 @@
 // 1234567890. New balance: 1300
 // account1.withdraw(1500); // Вывод: Insufficient funds in account
 // 1234567890
+class BankAccount {
+    static bankName = "Sber";
+    constructor(accountNumber, balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+    deposit(amount) {
+        console.log(`Deposited ${amount}into account ${this.accountNumber}. New balance ${this.balance+amount}`);
+        return this.balance += amount;
+    }
+    withdraw(amount) {
+        if (this.balance > amount) {
+            console.log(`Withdrawn ${amount}from account ${this.accountNumber}. New balance ${this.balance-amount}`);
+        } else {
+            console.log(`Insufficient funds in account ${this.accountNumber}`);
+        }
+        return this.balance -= amount;
+    }
+}
+const account1 = new BankAccount("1234567890", 1000);
+account1.deposit(500);
+account1.withdraw(200);
+account1.withdraw(1500);
