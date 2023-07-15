@@ -22,9 +22,6 @@ removeItem = () => {
 
 
 
-
-
-
 // const loadData = async(url) => {
 //     let data = localStorage.getItem(url);
 
